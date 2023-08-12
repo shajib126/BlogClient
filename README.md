@@ -14,7 +14,7 @@ pnpm dev
 
 - [x] structur file
 - [] Login and register Page
-- [] Blog Page
+- [x] Blog Page
 - [] Search and filter
 - [] Footer Page
 - [] Profile Page
