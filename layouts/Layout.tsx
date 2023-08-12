@@ -1,12 +1,13 @@
+import Navbar from '@/components/User/Navbar'
 import React from 'react'
 
 const Layout = ({children}:{children:React.ReactNode}) => {
   return (
-    <>
-        <h1>Header</h1>
+    <div>
+        <Navbar/>
         <main>{children}</main>
         <footer>Footer</footer>
-    </>
+    </div>
   )
 }
 
