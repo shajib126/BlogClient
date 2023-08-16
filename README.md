@@ -17,7 +17,7 @@ pnpm dev
 - [x] Blog Page
 - [] Search and filter
 - [] Footer Page
-- [] Profile Page
+- [x] Profile Page
 - [] Blog Details Page
 - [] Logout Page
 - [] Create Blog Page
