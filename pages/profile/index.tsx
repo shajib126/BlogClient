@@ -1,11 +1,20 @@
 import IsAuthenticated from "@/Utils/isAuthenticated";
+import AboutMe from "@/components/About/AboutMe";
+import Category from "@/components/Category/Category";
+import MyBlogs from "@/components/MyBlogs/MyBlogs";
 import Nav from "@/components/Profile/Nav";
 import Login from "@/components/User/Login";
 import Layout from "@/layouts/Layout";
 import Link from "next/link";
 import React from "react";
+import data from '@/data.json'
 
 const index = () => {
+  const categories = ['Category1','Category 2','Category 3']
+  const aboutMe = " simply dummy text of the printing and typesetting industry. LoremIpsum has been the industry's standard dummy text ever since the1500s, when an unknown printer took a galley of type and scrambledit to make a type specimen book. It has survived not only fivecenturies, but"
+
+  const tags = ['tag1','tag2','tag3']
+
   return (
     <IsAuthenticated>
       <Layout>
@@ -33,37 +42,17 @@ const index = () => {
               <button className="bg-rose-100 px-2 text-gray-500">following 15k</button>
             </div>
             <div>
-              <h1 className="text-xl text-gray-500 mt-4 font-bold border-dotted border-b-2 border-gray-300 p-1 mb-4">Categories</h1>
-              <div className="flex gap-4 md:block">
-                <button className="bg-rose-100 px-2 rounded-md text-gray-500 md:m-2">Category1</button>
-                <button className="bg-rose-100 px-2 rounded-md text-gray-500 md:m-2">Category2</button>
-                <button className="bg-rose-100 px-2 rounded-md text-gray-500 md:m-2">Category3</button>
-              </div>
+              <Category categories={categories} />
             </div>
           </div>
           <div className="md:w-[40%] mt-4  h-full md:bg-gray-100 p-2 rounded-md">
-            <h1 className="text-xl text-gray-500 mb-2 font-bold border-dotted border-b-2 border-gray-300 p-1">About Me</h1>
-            <p className="text-gray-500">
-              simply dummy text of the printing and typesetting industry. Lorem
-              Ipsum has been the industry's standard dummy text ever since the
-              1500s, when an unknown printer took a galley of type and scrambled
-              it to make a type specimen book. It has survived not only five
-              centuries, but
-            </p>
-            <div className="mt-4">
-              <h1 className="text-xl text-gray-500 font-bold border-dashed border-b-2 border-gray-300 p-1">My Tags</h1>
-              <div className="flex gap-4">
-              <button className="bg-rose-100 px-2 mt-2 rounded-md text-gray-500">tag2</button>
-              <button className="bg-rose-100 px-2 mt-2 rounded-md text-gray-500">tag1</button>
-              <button className="bg-rose-100 px-2 mt-2 rounded-md text-gray-500">tag3</button>
-              </div>
-            </div>
+            <AboutMe aboutMe={aboutMe} tags={tags} />
           </div>
 
           
         </div>
-        <div className="w-[90%] rounded-md p-1 bg-gray-100 mx-auto mt-4 h-screen">
-          My Blogs:
+        <div className="flex flex-wrap gap-2 w-[90%] rounded-md p-1 bg-gray-100 mx-auto mt-4 ">
+            <MyBlogs data={data} />
 
         </div>
       </Layout>

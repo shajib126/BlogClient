@@ -20,7 +20,7 @@ pnpm dev
 - [x] Profile Page
 - [] Blog Details Page
 - [] Logout Page
-- [] Create Blog Page
+- [x] Create Blog Page
 - [] Save blog
 - [] follow and unfollow
 - [] discussion in blog
