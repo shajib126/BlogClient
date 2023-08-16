@@ -14,7 +14,7 @@ const index = () => {
 
           <div className="flex gap-4 flex-wrap  md:block   md:p-2 w-[35%] md:h-[500px] rounded-md">
             <img
-              className="border-rose-300 border-4 shadow-md rounded-md md:w-[200px]"
+              className="border-rose-100 border-4 shadow-md rounded-lg md:w-[200px]"
               src="https://avatars.githubusercontent.com/u/31980836?v=4?s=400"
               alt="Avatar"
             />
@@ -33,16 +33,16 @@ const index = () => {
               <button className="bg-rose-100 px-2 text-gray-500">following 15k</button>
             </div>
             <div>
-              <h1 className="text-xl text-black-200 mt-4 font-bold">Categories</h1>
+              <h1 className="text-xl text-gray-500 mt-4 font-bold border-dotted border-b-2 border-gray-300 p-1 mb-4">Categories</h1>
               <div className="flex gap-4 md:block">
-                <button className="bg-rose-200 px-2 rounded-md text-gray-500 md:m-2">Category1</button>
-                <button className="bg-rose-200 px-2 rounded-md text-gray-500 md:m-2">Category2</button>
-                <button className="bg-rose-200 px-2 rounded-md text-gray-500 md:m-2">Category3</button>
+                <button className="bg-rose-100 px-2 rounded-md text-gray-500 md:m-2">Category1</button>
+                <button className="bg-rose-100 px-2 rounded-md text-gray-500 md:m-2">Category2</button>
+                <button className="bg-rose-100 px-2 rounded-md text-gray-500 md:m-2">Category3</button>
               </div>
             </div>
           </div>
           <div className="md:w-[40%] mt-4  h-full md:bg-gray-100 p-2 rounded-md">
-            <h1 className="text-xl text-black-200 mb-2 font-bold">About Me</h1>
+            <h1 className="text-xl text-gray-500 mb-2 font-bold border-dotted border-b-2 border-gray-300 p-1">About Me</h1>
             <p className="text-gray-500">
               simply dummy text of the printing and typesetting industry. Lorem
               Ipsum has been the industry's standard dummy text ever since the
@@ -51,11 +51,11 @@ const index = () => {
               centuries, but
             </p>
             <div className="mt-4">
-              <h1 className="text-xl text-black-200 font-bold">My Tags</h1>
+              <h1 className="text-xl text-gray-500 font-bold border-dashed border-b-2 border-gray-300 p-1">My Tags</h1>
               <div className="flex gap-4">
-              <button className="bg-rose-200 px-2 mt-2 rounded-md text-gray-500">tag2</button>
-              <button className="bg-rose-200 px-2 mt-2 rounded-md text-gray-500">tag1</button>
-              <button className="bg-rose-200 px-2 mt-2 rounded-md text-gray-500">tag3</button>
+              <button className="bg-rose-100 px-2 mt-2 rounded-md text-gray-500">tag2</button>
+              <button className="bg-rose-100 px-2 mt-2 rounded-md text-gray-500">tag1</button>
+              <button className="bg-rose-100 px-2 mt-2 rounded-md text-gray-500">tag3</button>
               </div>
             </div>
           </div>
