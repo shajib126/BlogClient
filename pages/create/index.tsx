@@ -9,6 +9,7 @@ const index = () => {
   const [blogs, setBlogs] = useState<String>("");
   const [category, setCategory] = useState<String>("");
   const [tag, setTag] = useState<String>("");
+  const [image,setImage] = useState('')
 
   const [categoryOpen, setCategoryOPen] = useState(false);
   const [tagOpen, setTagOpen] = useState(false);
@@ -18,7 +19,15 @@ const index = () => {
   const submitPost = () => {
     console.log(blog, category, tag);
   };
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {};
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if(e.target.files && e.target.files[0]){
+      const image = URL.createObjectURL(e.target.files[0])
+      setImage(image)
+      
+      
+    }
+    
+  };
   const handleOption = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCategory(e.target.value);
   };
@@ -33,8 +42,8 @@ const index = () => {
             <h1 className="text-center text-xl font-bold mb-10">Create Blog</h1>
             <div className="flex gap-3">
               <input type="text" />
-              <input type="file" />
-              <img src="" alt="Image" />
+              <input onChange={handleChange} type="file" />
+              <img src={image} alt="Image" className="h-[100px] w-[100px]" />
             </div>
             <div className="ml-[30%] mt-8 border-2 w-[80%] p-1 flex align-middle justify-between">
               <select
@@ -91,7 +100,7 @@ const index = () => {
           )}
 
           {tagOpen && (
-            <div className="bg-slate-200 h-[100px] w-[400px] rounded-md shadow-md z-10 absolute right-[28%] top-[15%]">
+            <div className="bg-slate-200 h-[100px] w-[400px] rounded-md shadow-md z-10 absolute right-[28%] top-[25%]">
               <InputModel stateSet={setTagOpen} inputText="tag" />
             </div>
           )}
