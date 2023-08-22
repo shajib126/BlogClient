@@ -6,14 +6,25 @@ import Nav from "@/components/Profile/Nav";
 import Login from "@/components/User/Login";
 import Layout from "@/layouts/Layout";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import data from '@/data.json'
+import { useRouter } from "next/router";
+import Button from "@/Utils/Button";
 
 const index = () => {
+  const following = ["name a","name b", "name c", "name c"]
   const categories = ['Category1','Category 2','Category 3']
   const aboutMe = " simply dummy text of the printing and typesetting industry. LoremIpsum has been the industry's standard dummy text ever since the1500s, when an unknown printer took a galley of type and scrambledit to make a type specimen book. It has survived not only fivecenturies, but"
 
+  const [isSubscribe,setIsSubscribe] = useState(false)
   const tags = ['tag1','tag2','tag3']
+  const router = useRouter()
+
+  const subscribe = () =>{
+    setIsSubscribe(!isSubscribe)
+  }
+  
+
 
   return (
     <IsAuthenticated>
@@ -27,6 +38,9 @@ const index = () => {
               src="https://avatars.githubusercontent.com/u/31980836?v=4?s=400"
               alt="Avatar"
             />
+            <div>
+              <Button buttonFunction={subscribe} title={isSubscribe ?"Subscribed":"Subscribe"} styleClass={isSubscribe ? 'bg-green-400 px-1':'bg-rose-200 px-1'} />
+            </div>
             <div className="mt-4 flex gap-5 w-full md:block">
               <div className="flex gap-2">
               <h1>Abu zubaer</h1>
@@ -38,8 +52,9 @@ const index = () => {
               </div>
             </div>
             <div className="flex gap-3 mt-4">
-              <button className="bg-rose-100 px-2 text-gray-500">followers 15k</button>
-              <button className="bg-rose-100 px-2 text-gray-500">following 15k</button>
+              <Button buttonFunction={()=>router.push(`/followers?followers=followers`)} title="followers" styleClass="bg-rose-100 px-2 text-gray-500" />
+              <Button buttonFunction={()=>router.push(`/following?following=${following}`)} title={`following ${following.length}`} styleClass="bg-rose-100 px-2 text-gray-500" />
+             
             </div>
             <div>
               <Category categories={categories} />
