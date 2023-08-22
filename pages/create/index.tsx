@@ -10,7 +10,8 @@ const index = () => {
   const [category, setCategory] = useState<String>("");
   const [tag, setTag] = useState<String>("");
 
-  const [categoryOpen, setCategoryOPen] = useState<Boolean>(false);
+  const [categoryOpen, setCategoryOPen] = useState(false);
+  const [tagOpen, setTagOpen] = useState(false);
 
   const categories = ["Category", "category1", "category2"];
   const tags = ["Tag", "tag1", "tag2"];
@@ -47,7 +48,10 @@ const index = () => {
                   </option>
                 ))}
               </select>
-              <button onClick={()=>setCategoryOPen(true)} className="bg-rose-400 p-1 rounded-md text-white">
+              <button
+                onClick={() => setCategoryOPen(true)}
+                className="bg-rose-400 p-1 rounded-md text-white"
+              >
                 Create Category
               </button>
             </div>
@@ -60,7 +64,7 @@ const index = () => {
                   </option>
                 ))}
               </select>
-              <button className="bg-rose-400 p-1 rounded-md text-white">
+              <button onClick={()=>setTagOpen(true)} className="bg-rose-400 p-1 rounded-md text-white">
                 Create Tag
               </button>
             </div>
@@ -82,7 +86,13 @@ const index = () => {
           </div>
           {categoryOpen && (
             <div className="bg-slate-200 h-[100px] w-[400px] rounded-md shadow-md z-10 absolute right-[28%] top-[15%]">
-              <InputModel setCategoryOpen={setCategoryOPen} />
+              <InputModel stateSet={setCategoryOPen} inputText="category" />
+            </div>
+          )}
+
+          {tagOpen && (
+            <div className="bg-slate-200 h-[100px] w-[400px] rounded-md shadow-md z-10 absolute right-[28%] top-[15%]">
+              <InputModel stateSet={setTagOpen} inputText="tag" />
             </div>
           )}
         </div>
