@@ -6,12 +6,15 @@ import Nav from "@/components/Profile/Nav";
 import Login from "@/components/User/Login";
 import Layout from "@/layouts/Layout";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import data from '@/data.json'
 import { useRouter } from "next/router";
 import Button from "@/Utils/Button";
+import { useStore } from "@/store/store";
+
 
 const index = () => {
+  const {me,user} = useStore((state)=>state)
   const following = ["name a","name b", "name c", "name c"]
   const categories = ['Category1','Category 2','Category 3']
   const aboutMe = " simply dummy text of the printing and typesetting industry. LoremIpsum has been the industry's standard dummy text ever since the1500s, when an unknown printer took a galley of type and scrambledit to make a type specimen book. It has survived not only fivecenturies, but"
@@ -19,11 +22,14 @@ const index = () => {
   const [isSubscribe,setIsSubscribe] = useState(false)
   const tags = ['tag1','tag2','tag3']
   const router = useRouter()
+  
 
   const subscribe = () =>{
     setIsSubscribe(!isSubscribe)
   }
   
+
+
 
 
   return (
@@ -43,17 +49,17 @@ const index = () => {
             </div>
             <div className="mt-4 flex gap-5 w-full md:block">
               <div className="flex gap-2">
-              <h1>Abu zubaer</h1>
+              <h1>{user?.name}</h1>
               <h1>facebook.com</h1>
               </div>
               <div className="flex gap-2">
-                <h1> shajib@gmail.com</h1>
+                <h1> {user?.email}</h1>
                 <h1> @zubaerr80</h1>
               </div>
             </div>
             <div className="flex gap-3 mt-4">
-              <Button buttonFunction={()=>router.push(`/followers?followers=followers`)} title="followers" styleClass="bg-rose-100 px-2 text-gray-500" />
-              <Button buttonFunction={()=>router.push(`/following?following=${following}`)} title={`following ${following.length}`} styleClass="bg-rose-100 px-2 text-gray-500" />
+              <Button buttonFunction={()=>router.push(`/followers?followers=${user?.followers}`)} title={`followers ${user?.followers?.length}`} styleClass="bg-rose-100 px-2 text-gray-500" />
+              <Button buttonFunction={()=>router.push(`/following?following=${user?.following}`)} title={`following ${user?.following?.length}`} styleClass="bg-rose-100 px-2 text-gray-500" />
              
             </div>
             <div>

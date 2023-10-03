@@ -1,10 +1,12 @@
 import React from 'react'
 
+import Link from 'next/link'
+
 const Navbar = () => {
   return (
     <div className="navbar bg-rose-100 shadow-md">
   <div className="flex-1">
-    <a className="btn btn-ghost normal-case text-xl">My Blog</a>
+    <Link href="/" className="btn btn-ghost normal-case text-xl">My Blog</Link>
   </div>
   <div className="flex-none">
     
@@ -16,10 +18,12 @@ const Navbar = () => {
       </label>
       <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
         <li>
-          <a className="justify-between">
+          
+          <Link href="/profile" className="justify-between">
             Profile
             <span className="badge">New</span>
-          </a>
+          </Link>
+         
         </li>
         <li><a>Settings</a></li>
         <li><a>Logout</a></li>

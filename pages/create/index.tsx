@@ -2,22 +2,30 @@ import IsAuthenticated from "@/Utils/isAuthenticated";
 import Nav from "@/components/Profile/Nav";
 import Layout from "@/layouts/Layout";
 import InputModel from "@/model/InputModel";
-import React, { useState } from "react";
+import { useStore } from "@/store/store";
+import React, { useEffect, useState } from "react";
 
 const index = () => {
   const [blog, setBlog] = useState("");
   const [blogs, setBlogs] = useState<String>("");
-  const [category, setCategory] = useState<String>("");
-  const [tag, setTag] = useState<String>("");
+  const [category, setCategory] = useState("");
+  const [tag, setTag] = useState("");
   const [image,setImage] = useState('')
 
   const [categoryOpen, setCategoryOPen] = useState(false);
   const [tagOpen, setTagOpen] = useState(false);
-
-  const categories = ["Category", "category1", "category2"];
-  const tags = ["Tag", "tag1", "tag2"];
+const {allCategory,categories,allTag,tags} = useStore((state)=>state)
+  useEffect(()=>{
+    allCategory()
+  },[])
+  useEffect(()=>{
+    allTag()
+  },[])
+  
   const submitPost = () => {
-    console.log(blog, category, tag);
+    
+    console.log(tag,category,image);
+    
   };
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if(e.target.files && e.target.files[0]){
@@ -25,13 +33,15 @@ const index = () => {
       setImage(image)
       
       
-    }
-    
+    }  
   };
+  
+  
   const handleOption = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCategory(e.target.value);
   };
-  console.log(blogs);
+ console.log(tags);
+ 
 
   return (
     <Layout>
@@ -47,13 +57,13 @@ const index = () => {
             </div>
             <div className="ml-[30%] mt-8 border-2 w-[80%] p-1 flex align-middle justify-between">
               <select
-                name=""
-                id=""
+                
                 onChange={(e) => setCategory(e.target.value)}
               >
-                {categories.map((category, i) => (
-                  <option key={i} value={category}>
-                    {category}
+                <option >Select Category</option>
+                {categories?.map((category, i) => (
+                  <option key={i} value={category._id}>
+                    {category?.category}
                   </option>
                 ))}
               </select>
@@ -67,9 +77,10 @@ const index = () => {
 
             <div className="ml-[30%] mt-8 border-2 w-[80%] p-1 flex align-middle justify-between">
               <select onChange={(e) => setTag(e.target.value)} name="" id="">
+                <option>Select Tag</option>
                 {tags.map((tag, i) => (
-                  <option key={i} value={tag}>
-                    {tag}
+                  <option key={i} value={tag?._id}>
+                    {tag?.tag}
                   </option>
                 ))}
               </select>
@@ -95,13 +106,13 @@ const index = () => {
           </div>
           {categoryOpen && (
             <div className="bg-slate-200 h-[100px] w-[400px] rounded-md shadow-md z-10 absolute right-[28%] top-[15%]">
-              <InputModel stateSet={setCategoryOPen} inputText="category" />
+              <InputModel data={category} stateSet={setCategoryOPen} inputText="category" />
             </div>
           )}
 
           {tagOpen && (
             <div className="bg-slate-200 h-[100px] w-[400px] rounded-md shadow-md z-10 absolute right-[28%] top-[25%]">
-              <InputModel stateSet={setTagOpen} inputText="tag" />
+              <InputModel data={tag} stateSet={setTagOpen} inputText="tag" />
             </div>
           )}
         </div>

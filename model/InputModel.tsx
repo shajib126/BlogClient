@@ -1,13 +1,19 @@
 import Button from "@/Utils/Button";
+import { useStore } from "@/store/store";
 import React from "react";
+
 interface InputModelProps{
   stateSet?:any;
   inputText:string;
+  data:string
   
 }
 
-const InputModel = ({stateSet,inputText}:InputModelProps) => {
+const InputModel = ({stateSet,inputText,data}:InputModelProps) => {
+  const {createTag} = useStore((state)=>state)
    const create = () =>{
+     
+      createTag({tag:data})
       stateSet(false)
    }
     
